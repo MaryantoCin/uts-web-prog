@@ -13,7 +13,8 @@
             @forelse ($books as $book)
                 <tr class="table-secondary">
                     <th>
-                        <a class="text-decoration-none text-black" href="/book/{{ $book->id }}">{{ $book->title }}</a>
+                        <a class="text-decoration-none text-black"
+                            href="{{ url('/book/' . $book->id) }}">{{ $book->title }}</a>
                     </th>
                     <td>{{ $book->detail->author }}</td>
                 </tr>
