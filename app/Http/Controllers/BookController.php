@@ -3,23 +3,28 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
     public function index()
     {
-        // Get all books and categories, then render index view
+        $books = Book::with('detail')->simplepaginate(5);
+        return view('index', ['books' => $books]);
     }
 
     public function filter($category)
     {
-        // Get books based on category and categories and render category view
+        $category_id = Category::where('category', 'LIKE', $category)->value('id');
+        $books = Category::find($category_id)->books()->get();
+        return view('filter', ['books' => $books]);
     }
 
-    public function show(Book $book)
+    public function show($id)
     {
-        // Get books detail info and render show book view
+        $book = Book::with('detail')->where('id', '=', $id)->first();
+        return view('show', ['book' => $book]);
     }
 
     public function contact()
