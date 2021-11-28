@@ -19,7 +19,7 @@ class BookSeeder extends Seeder
             ['category_id' => 7, 'title' => 'Gonjiam'],
             ['category_id' => 8, 'title' => 'Sherlock Homes'],
             ['category_id' => 9, 'title' => 'Your Lie in April'],
-            ['category_id' => 10, 'title' => 'Weathering with You'],
+            ['category_id' => 9, 'title' => 'Weathering with You'],
         ];
 
         DB::table('books')->insert($data);
