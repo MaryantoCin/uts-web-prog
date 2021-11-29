@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title', $current)
 @section('content')
-    <p class="bg-warning p-1 fs-2">Book List</p>
+    <p class="bg-warning p-1 fs-2">{{ $current }}</p>
     <table class="table table-borderless table-hover">
         <thead>
             <tr>

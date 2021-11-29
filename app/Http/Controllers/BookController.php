@@ -10,14 +10,14 @@ class BookController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $books = Book::with('detail')->simplepaginate(5);
+        $books = Book::simplepaginate(5);
         return view('index', ['books' => $books, 'categories' => $categories]);
     }
 
     public function filter($category)
     {
         $categories = Category::all();
-        $category = Category::where('category', 'LIKE', $category);
+        $category = Category::where('category', $category);
         $books = Category::find($category->value('id'))->books()->get();
         return view('filter', ['books' => $books, 'categories' => $categories, 'current' => $category->value('category')]);
     }
@@ -25,7 +25,7 @@ class BookController extends Controller
     public function show($id)
     {
         $categories = Category::all();
-        $book = Book::with('detail')->where('id', '=', $id)->first();
+        $book = Book::where('id', '=', $id)->first();
         return view('show', ['book' => $book, 'categories' => $categories]);
     }
 
